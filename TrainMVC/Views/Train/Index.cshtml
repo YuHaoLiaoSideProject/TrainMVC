@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TrainMVC.ViewModel.TrainQueryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<form action="@Url.Action("Index")" method="get">
+    起站:
+    <select name="startStation">
+        @foreach (var station in (List<TrainMVC.Models.StationModel>)ViewBag.Stations)
+        {
+            if (ViewBag.StartStation == station.Station)
+            {
+                <option selected value="@station.Station">@station.StationCTName</option>
+            }
+            else
+            {
+                <option value="@station.Station">@station.StationCTName</option>
+            }
+        }
+    </select>
+    訖站:
+    <select name="endStation">
+        @foreach (var station in (List<TrainMVC.Models.StationModel>)ViewBag.Stations)
+        {
+            if (ViewBag.EndStation == station.Station)
+            {
+                <option selected value="@station.Station">@station.StationCTName</option>
+            }
+            else
+            {
+                <option value="@station.Station">@station.StationCTName</option>
+            }
+        }
+    </select>
+
+    <input type="submit" value="Submit">
+</form>
+
+<h1>@ViewBag.StartStationName - @ViewBag.EndStationName</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            車次
+        </th>
+        <th>
+            出發時間
+        </th>
+        <th>
+            抵達時間
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Train)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartARRTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndARRTime)
+            </td>
+        </tr>
+    }
+
+</table>
