@@ -2,7 +2,7 @@
 {
     public class CountyModel
     {
-        public int County { get; set; }
-        public string CountyNo  { get; set; }
+        public string County { get; set; }
+        public int CountyNo  { get; set; }
     }
 }

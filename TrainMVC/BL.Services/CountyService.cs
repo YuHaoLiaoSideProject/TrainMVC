@@ -20,7 +20,7 @@ namespace TrainMVC.BL.Services
         public CountyService()
         {
             _County = CountyRepository.GetAll();
-            _CountyDic = _County.ToLookup(e => e.County, e => e.CountyNo).ToDictionary(e => e.Key, e => e.First());
+            _CountyDic = _County.ToLookup(e => e.CountyNo, e => e.County).ToDictionary(e => e.Key, e => e.First());
         }
 
         public List<CountyModel> GetCounty()
