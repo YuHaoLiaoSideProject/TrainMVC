@@ -20,7 +20,7 @@ namespace TrainMVC.BL.Services
         public TrainService()
         {
             _Stations = StationRepository.GetAll();
-            _StationsDic = _Stations.ToDictionary(e => e.Station, e => e.StationCTName);
+            _StationsDic = _Stations.ToLookup(e => e.Station, e => e.StationCTName).ToDictionary(e => e.Key, e => e.First());
         }
 
         public List<StationModel> GetStations()
