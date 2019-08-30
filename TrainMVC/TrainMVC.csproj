@@ -130,11 +130,14 @@
     <Compile Include="Controllers\TrainController.cs" />
     <Compile Include="DA.Interfaces\ICountyRepository.cs" />
     <Compile Include="DA.Interfaces\IStationRepository.cs" />
+    <Compile Include="DA.Interfaces\ICountyStationMappingRepository.cs" />
     <Compile Include="DA.Interfaces\ITrainRepository.cs" />
     <Compile Include="DA.Repositories\BaseRepository.cs" />
     <Compile Include="DA.Repositories\CountyRepository.cs" />
     <Compile Include="DA.Repositories\StationRepository.cs" />
+    <Compile Include="DA.Repositories\CountyStationMappingRepository.cs" />
     <Compile Include="DA.Repositories\TrainRepository.cs" />
+    <Compile Include="FilterParameter\StationFilterParameter.cs" />
     <Compile Include="FilterParameter\TrainFilterParameter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

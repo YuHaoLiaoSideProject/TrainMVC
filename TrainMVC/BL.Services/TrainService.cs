@@ -12,7 +12,7 @@ namespace TrainMVC.BL.Services
 {
     public class TrainService : ITrainService
     {
-        ITrainRepository TrainRepository = new TrainRepository();
+        ICountyStationMappingRepository TrainRepository = new TrainRepository();
 
         IStationRepository StationRepository = new StationRepository();
         private List<StationModel> _Stations { get; set; }
