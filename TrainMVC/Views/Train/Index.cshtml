@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 
-<form action="@Url.Action("Index")" method="get">
+<form action="@Url.Action("Index")" method="post">
     起站地區/縣市:
     <select name="StartStationCounty">
         @foreach (var county in (List<TrainMVC.Models.CountyModel>)ViewBag.County)
@@ -37,7 +37,7 @@
         }
     </select>
     訖站地區/縣市:
-    <select name="StartStationCounty">
+    <select name="EndStationCounty">
         @foreach (var county in (List<TrainMVC.Models.CountyModel>)ViewBag.County)
         {
             if (ViewBag.EndStationCounty == county.CountyNo)
@@ -67,7 +67,8 @@
 
     <input type="submit" value="Submit">
 </form>
-
+@if(ViewBag.StartStationName != null)
+{
 <h1>@ViewBag.StartStationName - @ViewBag.EndStationName</h1>
 
 <table class="table">
@@ -99,3 +100,4 @@
     }
 
 </table>
+}
