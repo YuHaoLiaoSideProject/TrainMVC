@@ -13,7 +13,7 @@ namespace TrainMVC.Controllers
         {
             var result = TrainService.GetTimetable(startStation, endStation);
 
-            var stations = TrainService.GetStations();
+            // var stations = TrainService.GetStations();
 
             var stationDic = TrainService.GetStationDic();
 
@@ -47,5 +47,5 @@ namespace TrainMVC.Controllers
 
             return View(result);
         }
-    }
+
 }

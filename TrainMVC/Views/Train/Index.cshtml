@@ -36,6 +36,20 @@
             }
         }
     </select>
+    訖站地區/縣市:
+    <select name="StartStationCounty">
+        @foreach (var county in (List<TrainMVC.Models.CountyModel>)ViewBag.County)
+        {
+            if (ViewBag.EndStationCounty == county.CountyNo)
+            {
+                <option selected value="@county.CountyNo">@county.County</option>
+            }
+            else
+            {
+                <option value="@county.CountyNo">@county.County</option>
+            }
+        }
+    </select>
     訖站:
     <select name="endStation">
         @foreach (var station in (List<TrainMVC.Models.StationModel>)ViewBag.Stations)
