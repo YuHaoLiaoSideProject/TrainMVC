@@ -10,17 +10,19 @@ namespace TrainMVC.DA.Repositories
 {
     public class StationRepository : BaseRepository, IStationRepository
     {
-        public List<StationModel> GetAll()
+        public List<StationCountyModel> GetAll()
         {
             string sql = $@"
-                            SELECT *
-                            FROM Station";
+                            SELECT S.*,scm.CountyNo
+	                        FROM Station s
+	                        JOIN StationCountyMapping scm ON S.Station = scm.Station";
 
             using (var conn = new SqlConnection(_DBConn))
             {
-                var result = conn.Query<StationModel>(sql).ToList();
+                var result = conn.Query<StationCountyModel>(sql).ToList();
                 return result;
             }
         }
+        
     }
 }

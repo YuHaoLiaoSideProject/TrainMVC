@@ -15,7 +15,7 @@ namespace TrainMVC.BL.Services
         ITrainRepository TrainRepository = new TrainRepository();
 
         IStationRepository StationRepository = new StationRepository();
-        private List<StationModel> _Stations { get; set; }
+        private List<StationCountyModel> _Stations { get; set; }
         private Dictionary<int, string> _StationsDic { get; set; }
         public TrainService()
         {
@@ -23,7 +23,7 @@ namespace TrainMVC.BL.Services
             _StationsDic = _Stations.ToLookup(e => e.Station, e => e.StationCTName).ToDictionary(e => e.Key, e => e.First());
         }
 
-        public List<StationModel> GetStations()
+        public List<StationCountyModel> GetStations()
         {
             return _Stations;
         }

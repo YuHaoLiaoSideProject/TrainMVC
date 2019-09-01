@@ -24,4 +24,15 @@ namespace TrainMVC.Utility.Extensions
             return DefaultValue;
         }
     }
+    public static class ExtensionOfIEnumerable
+    {
+        public static bool IsNotEmpty<T>(this IEnumerable<T> items)
+        {
+            if(items == null || items.Any() == false)
+            {
+                return false;
+            }
+            return true;
+        }
+    }
 }

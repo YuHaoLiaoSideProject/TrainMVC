@@ -19,9 +19,9 @@ namespace TrainMVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(int startStation , int endStation , int StartStationCounty , int EndStationCounty)
+        public ActionResult Index(int startStationId , int endStationId , int startStationCountyId , int endStationCountyId)
         {
-            var result = TrainService.GetTimetable(startStation, endStation);
+            var result = TrainService.GetTimetable(startStationId, endStationId);
 
              var stations = TrainService.GetStations();
 
@@ -31,26 +31,26 @@ namespace TrainMVC.Controllers
 
             var countyDic = CountyService.GetCountyDic();
 
-            ViewBag.StartStationCounty = StartStationCounty;
+            ViewBag.StartStationCounty = startStationCountyId;
 
-            ViewBag.EndStationCounty = EndStationCounty;
+            ViewBag.EndStationCounty = endStationCountyId;
 
             ViewBag.County = CountyService.GetCounty();
 
-            ViewBag.StartStationCountyName = countyDic.GetValue(StartStationCounty);
+            ViewBag.StartStationCountyName = countyDic.GetValue(startStationCountyId);
 
-            ViewBag.EndStationCountyName = countyDic.GetValue(EndStationCounty);
+            ViewBag.EndStationCountyName = countyDic.GetValue(endStationCountyId);
 
             
             ViewBag.Stations = TrainService.GetStations();
 
-            ViewBag.StartStation = startStation;
+            ViewBag.StartStation = startStationId;
 
-            ViewBag.EndStation = endStation;
+            ViewBag.EndStation = endStationId;
 
-            ViewBag.StartStationName = stationDic.GetValue(startStation);
+            ViewBag.StartStationName = stationDic.GetValue(startStationId);
 
-            ViewBag.EndStationName = stationDic.GetValue(endStation);
+            ViewBag.EndStationName = stationDic.GetValue(endStationId);
 
 
 

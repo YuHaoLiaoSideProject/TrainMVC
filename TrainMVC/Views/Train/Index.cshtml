@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<TrainMVC.ViewModel.TrainQueryViewModel>
-
+@using TrainMVC.Utility.Extensions;
 @{
     ViewBag.Title = "Index";
 }
@@ -9,7 +9,7 @@
 
 <form action="@Url.Action("Index")" method="post">
     起站地區/縣市:
-    <select name="StartStationCounty">
+    <select name="startStationCountyId">
         @foreach (var county in (List<TrainMVC.Models.CountyModel>)ViewBag.County)
         {
             if (ViewBag.StartStationCounty == county.CountyNo)
@@ -23,8 +23,8 @@
         }
     </select>
     起站:
-    <select name="startStation">
-        @foreach (var station in (List<TrainMVC.Models.StationModel>)ViewBag.Stations)
+    <select name="startStationId">
+        @foreach (var station in (List<TrainMVC.Models.StationCountyModel>)ViewBag.Stations)
         {
             if (ViewBag.StartStation == station.Station)
             {
@@ -37,7 +37,8 @@
         }
     </select>
     訖站地區/縣市:
-    <select name="EndStationCounty">
+    <select id="endStationCountyId" name="endStationCountyId">
+        <option county="" value="-1">請選擇</option>
         @foreach (var county in (List<TrainMVC.Models.CountyModel>)ViewBag.County)
         {
             if (ViewBag.EndStationCounty == county.CountyNo)
@@ -51,53 +52,87 @@
         }
     </select>
     訖站:
-    <select name="endStation">
-        @foreach (var station in (List<TrainMVC.Models.StationModel>)ViewBag.Stations)
+    <select id="endStationId" name="endStationId">
+        <option county="" value="-1">請選擇</option>
+        @foreach (var station in (List<TrainMVC.Models.StationCountyModel>)ViewBag.Stations)
         {
+
             if (ViewBag.EndStation == station.Station)
             {
-                <option selected value="@station.Station">@station.StationCTName</option>
+                <option county="@station.CountyNo" hidden="hidden" selected value="@station.Station">@station.StationCTName</option>
             }
             else
             {
-                <option value="@station.Station">@station.StationCTName</option>
+                <option county="@station.CountyNo" hidden="hidden" value="@station.Station">@station.StationCTName</option>
             }
         }
     </select>
 
     <input type="submit" value="Submit">
 </form>
-@if(ViewBag.StartStationName != null)
+@if (Model.IsNotEmpty())
 {
-<h1>@ViewBag.StartStationName - @ViewBag.EndStationName</h1>
+    <h1>@ViewBag.StartStationName - @ViewBag.EndStationName</h1>
 
-<table class="table">
-    <tr>
-        <th>
-            車次
-        </th>
-        <th>
-            出發時間
-        </th>
-        <th>
-            抵達時間
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Train)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartARRTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndARRTime)
-            </td>
+            <th>
+                車次
+            </th>
+            <th>
+                出發時間
+            </th>
+            <th>
+                抵達時間
+            </th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Train)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartARRTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndARRTime)
+                </td>
+            </tr>
+        }
+
+    </table>
 }
+<script src="/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        T($("#endStationCountyId"));
+    });
+    function T(item) {
+        var s = item;
+        var id = s.val();
+        var t = $('#endStationId option').each(function () {  //遍历所有option
+            var option = $(this);
+            var county = option.attr('county');   //获取option值 
+            if (county == id) {
+                option.removeAttr("hidden");
+                option.removeAttr("select");
+            }
+            else if (county === '')
+            {
+                option.attr("select");
+                $('#endStationId').val("-1");
+            }
+            else {
+                option.attr("hidden", "hidden");
+               option.removeAttr("select");
+            }
+        });
+
+    }
+    $("#endStationCountyId").change(function () {
+        var s = $(this);
+        T(s);
+    });
+</script>

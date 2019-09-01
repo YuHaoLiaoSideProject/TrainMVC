@@ -7,7 +7,7 @@ namespace TrainMVC.BL.Interfaces
     public interface ITrainService
     {
         List<TrainQueryViewModel> GetTimetable(int startStation, int endStation);
-        List<StationModel> GetStations();
+        List<StationCountyModel> GetStations();
         Dictionary<int, string> GetStationDic();
     }
 }

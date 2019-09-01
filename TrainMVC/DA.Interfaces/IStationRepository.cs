@@ -6,6 +6,6 @@ namespace TrainMVC.DA.Interfaces
 {
     public interface IStationRepository
     {
-        List<StationModel> GetAll();
+        List<StationCountyModel> GetAll();
     }
 }
