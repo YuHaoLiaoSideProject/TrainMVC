@@ -9,7 +9,8 @@
 
 <form action="@Url.Action("Index")" method="post">
     起站地區/縣市:
-    <select name="startStationCountyId">
+    <select id="startStationCountyId" name="startStationCountyId">
+        <option county="" value="-1">請選擇</option>
         @foreach (var county in (List<TrainMVC.Models.CountyModel>)ViewBag.County)
         {
             if (ViewBag.StartStationCounty == county.CountyNo)
@@ -23,16 +24,18 @@
         }
     </select>
     起站:
-    <select name="startStationId">
+    <select id="startStationId" name="endStationId">
+        <option county="" value="-1">請選擇</option>
         @foreach (var station in (List<TrainMVC.Models.StationCountyModel>)ViewBag.Stations)
         {
+
             if (ViewBag.StartStation == station.Station)
             {
-                <option selected value="@station.Station">@station.StationCTName</option>
+                <option county="@station.CountyNo" hidden="hidden" selected value="@station.Station">@station.StationCTName</option>
             }
             else
             {
-                <option value="@station.Station">@station.StationCTName</option>
+                <option county="@station.CountyNo" hidden="hidden" value="@station.Station">@station.StationCTName</option>
             }
         }
     </select>
@@ -134,5 +137,35 @@
     $("#endStationCountyId").change(function () {
         var s = $(this);
         T(s);
+    });
+
+
+        $(document).ready(function () {
+        A($("#startStationCountyId"));
+    });
+    function A(item) {
+        var start = item;
+        var id_start = start.val();
+        var startStation_option = $('#startStationCountyId option').each(function () {  //遍历所有option
+            var option = $(this);
+            var county = option.attr('county');   //获取option值
+            if (county == id) {
+                option.removeAttr("hidden");
+                option.removeAttr("select");
+            }
+            else if (county === '') {
+                option.attr("select");
+                $('#startStationCountyId').val("-1");
+            }
+            else {
+                option.attr("hidden", "hidden");
+                option.removeAttr("select");
+            }
+        });
+
+    }
+    $("#startStationCountyId").change(function () {
+        var start = $(this);
+        T(start);
     });
 </script>
