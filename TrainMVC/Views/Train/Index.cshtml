@@ -24,12 +24,12 @@
         }
     </select>
     起站:
-    <select id="startStationId" name="endStationId">
+    <select id="startStationId" name="startStationId">
         <option county="" value="-1">請選擇</option>
         @foreach (var station in (List<TrainMVC.Models.StationCountyModel>)ViewBag.Stations)
         {
 
-            if (ViewBag.StartStation == station.Station)
+            if (ViewBag.EndStation == station.Station)
             {
                 <option county="@station.CountyNo" hidden="hidden" selected value="@station.Station">@station.StationCTName</option>
             }
@@ -107,7 +107,40 @@
 
     </table>
 }
-<script src="/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        A($("#startStationCountyId"));
+    });
+    function A(item) {
+        var s = item;
+        var id = s.val();
+        var t = $('#startStationId option').each(function ()
+        {  //遍历所有option
+            var option = $(this);
+            var county = option.attr('county');   //获取option值
+            if (county == id)
+            {
+                option.removeAttr("hidden");
+                option.removeAttr("select");
+            }
+            else if (county === '')
+            {
+                option.attr("select");
+                $('#startStationId').val("-1");
+            }
+            else {
+                option.attr("hidden", "hidden");
+               option.removeAttr("select");
+            }
+        });
+
+    }
+    $("#startStationCountyId").change(function () {
+        var s = $(this);
+        A(s);
+    });
+</script>
 <script>
     $(document).ready(function() {
         T($("#endStationCountyId"));
@@ -115,10 +148,12 @@
     function T(item) {
         var s = item;
         var id = s.val();
-        var t = $('#endStationId option').each(function () {  //遍历所有option
+        var t = $('#endStationId option').each(function ()
+        {  //遍历所有option
             var option = $(this);
-            var county = option.attr('county');   //获取option值 
-            if (county == id) {
+            var county = option.attr('county');   //获取option值
+            if (county == id)
+            {
                 option.removeAttr("hidden");
                 option.removeAttr("select");
             }
@@ -140,32 +175,5 @@
     });
 
 
-        $(document).ready(function () {
-        A($("#startStationCountyId"));
-    });
-    function A(item) {
-        var start = item;
-        var id_start = start.val();
-        var startStation_option = $('#startStationCountyId option').each(function () {  //遍历所有option
-            var option = $(this);
-            var county = option.attr('county');   //获取option值
-            if (county == id) {
-                option.removeAttr("hidden");
-                option.removeAttr("select");
-            }
-            else if (county === '') {
-                option.attr("select");
-                $('#startStationCountyId').val("-1");
-            }
-            else {
-                option.attr("hidden", "hidden");
-                option.removeAttr("select");
-            }
-        });
 
-    }
-    $("#startStationCountyId").change(function () {
-        var start = $(this);
-        T(start);
-    });
 </script>
