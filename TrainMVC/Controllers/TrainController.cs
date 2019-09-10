@@ -56,5 +56,12 @@ namespace TrainMVC.Controllers
 
             return View(result);
         }
+        public ActionResult GetTrain()
+        {
+
+            
+
+            return View();
+        }
     }
 }
