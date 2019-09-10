@@ -95,7 +95,7 @@
             <tr>
                 <td>
                     @*@Html.DisplayFor(modelItem => item.Train)*@
-                    @Html.ActionLink(item.Train.ToString(), "GetTrain", new { ID=item.Train }) 
+                    @Html.ActionLink(item.Train.ToString(), "GetTrainIFO", new { train=item.Train }) 
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.StartARRTime)

@@ -9,6 +9,8 @@ namespace TrainMVC.Controllers
     {
         ITrainService TrainService = new TrainService();
         ICountyService CountyService = new CountyService();
+        IGetTrainIFOService GetTrainIFOService = new GetTrainIFOService();
+
         public ActionResult Index()
         {
             
@@ -56,12 +58,13 @@ namespace TrainMVC.Controllers
 
             return View(result);
         }
-        public ActionResult GetTrain()
+        public ActionResult GetTrainIFO(int train)
         {
+            var result = GetTrainIFOService.GetTrainIFO(train);
+            ViewBag.TrainID = train;
 
-            
 
-            return View();
+            return View(result);
         }
     }
 }

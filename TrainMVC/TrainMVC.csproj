@@ -123,27 +123,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BL.Interfaces\IGetTrainIFOService.cs" />
     <Compile Include="BL.Interfaces\ICountyService.cs" />
     <Compile Include="BL.Interfaces\ITrainService.cs" />
+    <Compile Include="BL.Services\GetTrainIFOService.cs" />
     <Compile Include="BL.Services\CountyService.cs" />
     <Compile Include="BL.Services\TrainService.cs" />
     <Compile Include="Controllers\TrainController.cs" />
     <Compile Include="DA.Interfaces\ICountyRepository.cs" />
     <Compile Include="DA.Interfaces\IStationRepository.cs" />
+    <Compile Include="DA.Interfaces\IGetTrainIFORepository.cs" />
     <Compile Include="DA.Interfaces\ITrainRepository.cs" />
     <Compile Include="DA.Repositories\BaseRepository.cs" />
     <Compile Include="DA.Repositories\CountyRepository.cs" />
     <Compile Include="DA.Repositories\StationRepository.cs" />
+    <Compile Include="DA.Repositories\GetTrainIFORepository.cs" />
     <Compile Include="DA.Repositories\TrainRepository.cs" />
+    <Compile Include="FilterParameter\GetTrainIFOFilterParameter.cs" />
     <Compile Include="FilterParameter\TrainFilterParameter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CountyModel.cs" />
     <Compile Include="Models\StationModel.cs" />
+    <Compile Include="Models\GetTrainIFOModel.cs" />
     <Compile Include="Models\TrainQueryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility.Extensions\ExtensionOfDictionary.cs" />
+    <Compile Include="ViewModel\GetTrainIFOViewModel.cs" />
     <Compile Include="ViewModel\TrainQueryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +161,7 @@
     <Content Include="Views\Train\Index.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Train\GetTrainIFO.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
