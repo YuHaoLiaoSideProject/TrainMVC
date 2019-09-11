@@ -7,5 +7,6 @@
         public string StartARRTime { get; set; }
         public int EndStation { get; set; }
         public string EndARRTime { get; set; }
-}
+        public string TrainLevel { get; set; }
+    }
 }

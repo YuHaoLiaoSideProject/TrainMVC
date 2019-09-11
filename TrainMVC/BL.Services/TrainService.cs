@@ -41,6 +41,7 @@ namespace TrainMVC.BL.Services
             {
                 EndARRTime = e.EndARRTime,
                 StartARRTime = e.StartARRTime,
+                TrainLevel = e.TrainLevel,
                 EndStationName = _StationsDic.GetValue(e.EndStation),
                 StartStationName = _StationsDic.GetValue(e.StartStation),
                 Train = e.Train

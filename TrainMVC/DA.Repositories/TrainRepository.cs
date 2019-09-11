@@ -19,8 +19,11 @@ namespace TrainMVC.DA.Repositories
 	                            ,T1.ARRTime StartARRTime
 	                            ,T2.Station EndStation
 	                            ,T2.ARRTime EndARRTime
+								,T3.TrainsLevel TrainLevel 
+
                             FROM [dbo].[train] AS T1
-                            JOIN train AS T2 ON T1.Train = T2.Train
+                            JOIN train AS T2 ON T1.Train = T2.train
+							JOIN TrainLevelMapping AS T3 ON T1.CarClass=T3.CarClass
                             WHERE 
 	                            T2.[Order] > T1.[Order]";
 

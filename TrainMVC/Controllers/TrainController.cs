@@ -53,6 +53,8 @@ namespace TrainMVC.Controllers
             ViewBag.StartStationName = stationDic.GetValue(startStationId);
 
             ViewBag.EndStationName = stationDic.GetValue(endStationId);
+           
+            
 
 
 

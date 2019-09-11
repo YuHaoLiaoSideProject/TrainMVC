@@ -12,6 +12,6 @@ namespace TrainMVC.ViewModel
         public string StartARRTime { get; set; }
         public string EndStationName { get; set; }
         public string EndARRTime { get; set; }
-
+        public string TrainLevel { get; set; }
     }
 }

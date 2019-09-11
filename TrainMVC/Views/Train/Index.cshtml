@@ -83,6 +83,9 @@
                 車次
             </th>
             <th>
+                車種
+            </th>
+            <th>
                 出發時間
             </th>
             <th>
@@ -92,18 +95,21 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.Train)*@
-                    @Html.ActionLink(item.Train.ToString(), "GetTrainIFO", new { train=item.Train }) 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartARRTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndARRTime)
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Train)*@
+            @Html.ActionLink(item.Train.ToString(), "GetTrainIFO", new { train = item.Train })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartARRTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndARRTime)
+        </td>
+    </tr>
         }
 
     </table>
