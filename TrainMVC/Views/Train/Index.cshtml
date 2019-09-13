@@ -80,10 +80,10 @@
     <table class="table">
         <tr>
             <th>
-                車次
+                車種
             </th>
             <th>
-                車種
+                車次
             </th>
             <th>
                 出發時間
@@ -97,11 +97,11 @@
         {
     <tr>
         <td>
-            @*@Html.DisplayFor(modelItem => item.Train)*@
-            @Html.ActionLink(item.Train.ToString(), "GetTrainIFO", new { train = item.Train })
+            @Html.DisplayFor(modelItem => item.TrainLevel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TrainLevel)
+            @*@Html.DisplayFor(modelItem => item.Train)*@
+            @Html.ActionLink(item.Train.ToString(), "GetTrainIFO", new { train = item.Train })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StartARRTime)
