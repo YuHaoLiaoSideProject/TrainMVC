@@ -26,7 +26,6 @@ namespace TrainMVC.Controllers
 
             ViewBag.EndStationName = stationDic.GetValue(endStation);
 
-            //測試
             return View(result);
         }
     }
